@@ -1,8 +1,10 @@
 # Spokesoft
 ## Clobberfest
-### A browser based role playing game build with C# dotnet, typescript, and scss
+### A browser-based, role-playing game, build with C# .NET
 
-## Introduction
+    It's clobbering time!
+
+## Overview
 
 ```
 src/
@@ -22,6 +24,9 @@ src/
             Horn/       # Messaging service
             Warstrike/  # Damage calculation service
 ```
+
+## Documentation
+More information in `src/` directory
 
 ## License
 
