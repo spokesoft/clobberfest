@@ -1,0 +1,15 @@
+{
+  "name": "spokesoft.clobberfest.codegen",
+  "version": "1.0.0",
+  "description": "Code generator templates for clobberfest",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "inflection": "^3.0.0"
+  }
+}

@@ -1,4 +1,4 @@
-@Spokesoft.Clobberfest.Rest_HostAddress = http://localhost:5203
+@Spokesoft.Clobberfest.Rest_HostAddress = http://localhost:5002
 
 GET {{Spokesoft.Clobberfest.Rest_HostAddress}}/weatherforecast/
 Accept: application/json
