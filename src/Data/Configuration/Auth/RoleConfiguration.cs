@@ -15,3 +15,4 @@ namespace Spokesoft.Clobberfest.Data.Configuration.Auth
         }
     }
 }
+
