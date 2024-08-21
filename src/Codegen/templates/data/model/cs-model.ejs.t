@@ -2,6 +2,8 @@
 to: <%= h.toDataModelCsModel(name, schema) %>
 force: true
 ---
+using Spokesoft.Clobberfest.Data.Models.Auth;
+
 namespace Spokesoft.Clobberfest.Data.Models.<%= h.toSchema(schema) %>
 {
     /// <summary>

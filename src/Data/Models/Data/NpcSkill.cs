@@ -1,3 +1,5 @@
+using Spokesoft.Clobberfest.Data.Models.Auth;
+
 namespace Spokesoft.Clobberfest.Data.Models.Data
 {
     /// <summary>

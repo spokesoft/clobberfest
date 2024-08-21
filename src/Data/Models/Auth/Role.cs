@@ -1,4 +1,6 @@
-namespace Spokesoft.Data.Models.Auth
+using Spokesoft.Clobberfest.Data.Models.Auth;
+
+namespace Spokesoft.Clobberfest.Data.Models.Auth
 {
     /// <summary>
     /// Role base entity
@@ -19,5 +21,9 @@ namespace Spokesoft.Data.Models.Auth
     public class Role : BaseRole
     {
         public long Id { get; set; }
+
+        public User CreatedBy { get; set; } = null!;
+        public User UpdatedBy { get; set; } = null!;
+        public User? DeletedBy { get; set; } = null!;
     }
 }
