@@ -34,7 +34,7 @@
 # hygen data model --name Npc --schema Game
 # hygen data model --name Season --schema Game
 
-# Generate web project areas
+# # Generate web project areas
 # hygen web area --name Accounts
 # hygen web area --name Chat
 # hygen web area --name Heroes
@@ -43,19 +43,25 @@
 # hygen web area --name Seasons
 # hygen web area --name Wiki
 
-hygen web page --area Accounts --name AccessDenied
-hygen web page --area Accounts --name ConfirmEmail
-hygen web page --area Accounts --name ConfirmEmailChange
-hygen web page --area Accounts --name ExternalLogin
-hygen web page --area Accounts --name ForgotPassword
-hygen web page --area Accounts --name ForgotPasswordConfirmation
-hygen web page --area Accounts --name Lockout
-hygen web page --area Accounts --name Login
-hygen web page --area Accounts --name LoginWith2fa
-hygen web page --area Accounts --name LoginWithRecoveryCode
-hygen web page --area Accounts --name Logout
-hygen web page --area Accounts --name Register
-hygen web page --area Accounts --name RegisterConfirmation
-hygen web page --area Accounts --name ResendEmailConfirmation
-hygen web page --area Accounts --name ResetPassword
-hygen web page --area Accounts --name ResetPasswordConfirmation
+# # Generate account web pages
+# hygen web page --area Accounts --name AccessDenied
+# hygen web page --area Accounts --name ConfirmEmail
+# hygen web page --area Accounts --name ConfirmEmailChange
+# hygen web page --area Accounts --name ExternalLogin
+# hygen web page --area Accounts --name ForgotPassword
+# hygen web page --area Accounts --name ForgotPasswordConfirmation
+# hygen web page --area Accounts --name Lockout
+# hygen web page --area Accounts --name Login
+# hygen web page --area Accounts --name LoginWith2fa
+# hygen web page --area Accounts --name LoginWithRecoveryCode
+# hygen web page --area Accounts --name Logout
+# hygen web page --area Accounts --name Register
+# hygen web page --area Accounts --name RegisterConfirmation
+# hygen web page --area Accounts --name ResendEmailConfirmation
+# hygen web page --area Accounts --name ResetPassword
+# hygen web page --area Accounts --name ResetPasswordConfirmation
+
+hygen web page --area Heroes --name Create
+hygen web page --area Heroes --name Graveyard
+hygen web page --area Heroes --name Index
+hygen web page --area Heroes --name Profile
