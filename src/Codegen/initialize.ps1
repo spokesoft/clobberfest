@@ -61,7 +61,12 @@
 # hygen web page --area Accounts --name ResetPassword
 # hygen web page --area Accounts --name ResetPasswordConfirmation
 
-hygen web page --area Heroes --name Create
-hygen web page --area Heroes --name Graveyard
-hygen web page --area Heroes --name Index
-hygen web page --area Heroes --name Profile
+# hygen web page --area Heroes --name Create
+# hygen web page --area Heroes --name Graveyard
+# hygen web page --area Heroes --name Index
+# hygen web page --area Heroes --name Profile
+
+hygen web page --area Wiki --name HeroClasses
+hygen web page --area Wiki --name Graveyard
+hygen web page --area Wiki --name Index
+hygen web page --area Wiki --name Profile
