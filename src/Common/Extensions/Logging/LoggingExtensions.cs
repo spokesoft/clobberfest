@@ -4,7 +4,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
 
-namespace Spokeoft.Clobberfest.Common.Extensions.Logging
+namespace Spokesoft.Clobberfest.Common.Extensions.Logging
 {
     public static class LoggingExtensions
     {

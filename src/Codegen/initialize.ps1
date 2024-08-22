@@ -67,6 +67,4 @@
 # hygen web page --area Heroes --name Profile
 
 hygen web page --area Wiki --name HeroClasses
-hygen web page --area Wiki --name Graveyard
-hygen web page --area Wiki --name Index
-hygen web page --area Wiki --name Profile
+hygen web page --area Wiki --name HeroSkills
