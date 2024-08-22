@@ -1,4 +1,5 @@
-using Spokeoft.Clobberfest.Common.Extensions.Logging;
+using Spokesoft.Clobberfest.Common.Extensions.Configuration;
+using Spokesoft.Clobberfest.Common.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
