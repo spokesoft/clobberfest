@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Spokeoft.Clobberfest.Web.Controllers
+namespace Spokesoft.Clobberfest.Web.Controllers
 {
     public class AppController : Controller
     {

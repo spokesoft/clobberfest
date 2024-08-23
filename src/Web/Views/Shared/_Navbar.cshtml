@@ -1,0 +1,46 @@
+@*
+/// <summary>
+/// Main layout navbar
+/// </summary>
+*@
+@model ViewModel
+
+<header>
+    <nav class="navbar is-spaced">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">Clobberfest</a>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="/blog">Blog</a>
+                    <a class="navbar-item" href="/wiki">Wiki</a>
+                    <a class="navbar-item" href="/play">Play</a>
+                </div>
+                <div class="navbar-end">
+                    <a class="navbar-item" href="https://github.com/spokesoft/clobberfest">
+                        <span class="icon">
+                            <i class="fab fa-github"></i>
+                        </span>
+                    </a>
+                    @if (true)
+                    {
+                        <a class="navbar-item">
+                            <span class="icon-text">
+                                <span class="icon">
+                                    <i class="fas fa-user-circle"></i>
+                                </span>
+                                <span>@Model.Navbar.UserDisplayName</span>
+                            </span>
+                        </a>
+                    }
+                    else 
+                    {
+                        <a class="navbar-item" href="@NavbarModel.LoginHref">@NavbarModel.LoginText</a>
+                        <a class="navbar-item" href="@NavbarModel.RegisterHref">@NavbarModel.RegisterText</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

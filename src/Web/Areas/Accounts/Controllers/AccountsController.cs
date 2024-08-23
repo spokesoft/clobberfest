@@ -1,4 +1,4 @@
-using Spokeoft.Clobberfest.Web.Controllers;
+using Spokesoft.Clobberfest.Web.Controllers;
 
 namespace Spokesoft.Clobberfest.Web.Areas.Accounts.Controllers
 {
