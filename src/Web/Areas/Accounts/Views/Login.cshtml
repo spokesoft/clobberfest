@@ -1,0 +1,101 @@
+<section class="hero is-fullheight">
+<div class="hero-body">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd">
+                <div class="card has-shadow">
+
+                    <div class="ribbon google-ribbon">
+                        <span class="icon is-medium">
+                            <i class="fab fa-google"></i>
+                        </span>
+                    </div>
+
+                    <div class="ribbon facebook-ribbon">
+                        <span class="icon is-medium">
+                            <i class="fab fa-facebook"></i>
+                        </span>
+                    </div>
+
+                    <div class="card-image px-5 pt-5">
+                        <figure class="image is-square is-flex is-justify-content-center is-align-items-center">
+                            <img src="/img/login.png" alt="Placeholder image" />
+                        </figure>
+                    </div>
+                    @* <header class="card-header">
+                        <p class="card-header-title">Sign in</p>
+                    </header> *@
+                    <div class="card-content pt-0">
+                        <div class="content">
+                            @* <p class="has-text-centered">Sign in with your existing account.</p> *@
+                            <form>
+                                <div class="field">
+                                    <label class="is-sr-only">Username</label>
+                                    <div class="control">
+                                        <input class="input" type="email" placeholder="Email address">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="is-sr-only">Password</label>
+                                    <div class="control">
+                                        <input class="input" type="password" placeholder="Password">
+                                    </div>
+                                </div>
+                                @* <div class="field">
+                                    <label class="checkbox">
+                                        <input type="checkbox" />
+                                        Remember me on this device
+                                    </label>
+                                </div> *@
+                                <button class="button is-fullwidth">
+                                    <span class="icon mr-2">
+                                        <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
+                                    </span>
+                                    Sign in
+                                </button>
+                            </form>
+                            <div class="mt-3 has-text-centered">
+                                <a href="/register">Not an existing user?</a>
+                            </div>
+                        </div>
+                    </div>
+                    @* <footer class="card-footer">
+                        <aside class="menu card-footer-item">
+                            <ul class="menu-list">
+                                <li><a class="has-text-centered">Not an existing user?</a></li>
+                                <li><a class="has-text-centered">Unable to sign in?</a></li>
+                            </ul>
+                        </aside>
+                    </footer> *@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+@section Styles {
+    <style>
+    .ribbon {
+        --f: 10px; /* control the folded part*/
+        --r: 15px; /* control the ribbon shape */
+        --t: 10px; /* the top offset */
+        
+        position: absolute;
+        inset: var(--t) calc(-1*var(--f)) auto auto;
+        padding: 0 10px var(--f) calc(10px + var(--r));
+        clip-path: 
+            polygon(0 0,100% 0,100% calc(100% - var(--f)),calc(100% - var(--f)) 100%,
+            calc(100% - var(--f)) calc(100% - var(--f)),0 calc(100% - var(--f)),
+            var(--r) calc(50% - var(--f)/2));
+        background: #BD1550;
+        box-shadow: 0 calc(-1*var(--f)) 0 inset #0005;
+    }
+    .google-ribbon {
+        top: 175px;
+    }
+    .facebook-ribbon {
+        top: 215px;
+    }
+    </style>
+}

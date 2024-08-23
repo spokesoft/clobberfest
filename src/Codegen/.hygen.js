@@ -37,6 +37,10 @@ const toWebAreaLayout = (name) => resolve(webRoot, 'Areas', camelize(name), 'Vie
 const toWebAreaModel = (name) => resolve(webRoot, 'Areas', camelize(name), 'Models', `${camelize(name)}Page.cs`);
 const toWebAreaViewStart = (name) => resolve(webRoot, 'Areas', camelize(name), 'Views', '_ViewStart.cshtml');
 
+const toWebPageController = (name, area) => resolve(webRoot, 'Areas', camelize(area), 'Controllers', `${camelize(name)}Controller.cs`);
+const toWebPageModel = (name, area) => resolve(webRoot, 'Areas', camelize(area), 'Models', `${camelize(name)}ViewModel.cs`);
+const toWebPageView = (name, area) => resolve(webRoot, 'Areas', camelize(area), 'Views', `${camelize(name)}.cshtml`);
+
 module.exports = {
     templates: resolve(codegenRoot, 'templates'),
     helpers: {
@@ -60,6 +64,10 @@ module.exports = {
         toWebAreaController,
         toWebAreaLayout,
         toWebAreaModel,
-        toWebAreaViewStart
+        toWebAreaViewStart,
+
+        toWebPageController,
+        toWebPageModel,
+        toWebPageView,
     }
 }

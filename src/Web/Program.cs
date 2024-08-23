@@ -1,6 +1,11 @@
+using Spokesoft.Clobberfest.Common.Extensions.Configuration;
+using Spokesoft.Clobberfest.Common.Extensions.Logging;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.AddConfiguration();
+builder.AddLogging();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
