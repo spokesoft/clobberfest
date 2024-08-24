@@ -1,3 +1,10 @@
-@{
-    Layout = "_Layout";
+﻿@{
+    if(User != null && User.Identity != null && User.Identity.IsAuthenticated)
+    {
+        Layout = "_Default";
+    }
+    else
+    {
+        Layout = "_Guest";
+    }
 }

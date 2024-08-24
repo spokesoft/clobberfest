@@ -29,4 +29,18 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.MapAreaControllerRoute(
+    name: "heroes-default",
+    areaName: "Heroes",
+    pattern: "heroes/{controller}/{action}/{id?}",
+    defaults: new { action = "Index" }
+);
+
+app.MapAreaControllerRoute(
+    name: "play-default",
+    areaName: "Play",
+    pattern: "play/{controller}/{action}/{id?}",
+    defaults: new { action = "Index" }
+);
+
 app.Run();

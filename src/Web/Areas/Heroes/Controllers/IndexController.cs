@@ -7,10 +7,7 @@ namespace Spokesoft.Clobberfest.Web.Areas.Heroes.Controllers
     public class IndexController : HeroesController
     {
         [Route(IndexRoute)]
-        public IActionResult Get()
-        {
-            var viewModel = new IndexViewModel();
-            return View(ViewPath("Index.cshtml"), viewModel);
-        }
+        public IActionResult RenderIndex() 
+            => View(ViewPath("Index.cshtml"), new IndexViewModel());
     }
 }

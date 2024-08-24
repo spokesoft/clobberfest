@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc;
+using Spokesoft.Clobberfest.Web.Areas.Wiki.Models;
 using Spokesoft.Clobberfest.Web.Controllers;
 
 namespace Spokesoft.Clobberfest.Web.Areas.Wiki.Controllers
@@ -12,5 +14,8 @@ namespace Spokesoft.Clobberfest.Web.Areas.Wiki.Controllers
         public const string MobSkillsRoute = "wiki/mob-skills";
         public const string NpcClassesRoute = "wiki/npc-classes";
         public const string NpcSkillsRoute = "wiki/npc-skills";
+
+        [Route("/wiki")]
+        public IActionResult Index() => View("~/Areas/Wiki/Views/Index.cshtml", new IndexViewModel());
     }
 }
