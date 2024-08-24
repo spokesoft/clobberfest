@@ -1,3 +1,5 @@
+@model Spokesoft.Clobberfest.Web.Areas.Blog.Models.IndexViewModel
+
 <section class="section is-fullheight" style="max-height: 100vh; padding-top: 84px;">
     <div class="columns">
         <div
@@ -16,71 +18,16 @@
 
             <div style="position: absolute; height: 100vh; max-height: calc(100vh - 99px); margin-right: 48px;">
                 <div style="overflow-y: scroll; height: 100%; padding-right: 15px;">
-                    <article class="message">
-                        <div class="message-header">
-                            <p>Clobberfest v0.0.1</p>
-                            <button>
-                                <i class="fas fa-home"></i>
-                                Hello button
-                            </button>
-                        </div>
-                        <div class="message-body">
-                            <h2>@@jtrumbull</h2>
-                            <h2 class="mb-3">2024-08-22</h2>
 
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec
-                            nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus
-                            diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac
-                            <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et
-                            sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a
-                            neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-                        </div>
-                    </article>
+                    @if(Model.Articles.Any())
+                    {
+                        <h1>Has articles</h1>
+                    }
+                    else 
+                    {
+                        @await Html.PartialAsync("_NoArticles.cshtml")
+                    }
 
-                    <article class="message">
-                        <div class="message-header">
-                            <p>Clobberfest v0.0.1</p>
-                            <button>
-                                <i class="fas fa-home"></i>
-                                Hello button
-                            </button>
-                        </div>
-                        <div class="message-body">
-                            <h2>@@jtrumbull</h2>
-                            <h2 class="mb-3">2024-08-22</h2>
-
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec
-                            nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus
-                            diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac
-                            <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et
-                            sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a
-                            neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-                        </div>
-                    </article>
-
-                    <article class="message">
-                        <div class="message-header">
-                            <p>Clobberfest v0.0.1</p>
-                            <button>
-                                <i class="fas fa-home"></i>
-                                Hello button
-                            </button>
-                        </div>
-                        <div class="message-body">
-                            <h2>@@jtrumbull</h2>
-                            <h2 class="mb-3">2024-08-22</h2>
-
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec
-                            nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus
-                            diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac
-                            <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et
-                            sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a
-                            neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-                        </div>
-                    </article>
                 </div>
             </div>
 

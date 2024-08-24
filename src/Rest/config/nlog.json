@@ -1,0 +1,55 @@
+{
+  "NLog": {
+    "throwConfigExceptions": true,
+    "targets": {
+      "async": true,
+      "allfile": {
+        "type": "File",
+        "fileName": "logs/all.log",
+        "layout": "[${longdate}] ${level} | ${logger} | ${message} ${exception}"
+      },
+      "sysfile": {
+        "type": "File",
+        "fileName": "logs/sys.log",
+        "layout": "[${longdate}] ${level} | ${logger} | ${message} ${exception}"
+      },
+      "appfile": {
+        "type": "File",
+        "fileName": "logs/app.log",
+        "layout": "[${longdate}] ${level} | ${logger} | ${message} ${exception}"
+      },
+      "console": {
+        "type": "ColoredConsole",
+        "layout": "[${longdate}] ${message} ${exception:format=tostring}"
+      }
+    },
+    "rules": [
+      {
+        "logger": "*",
+        "minLevel": "Trace",
+        "writeTo": "allfile"
+      },
+      {
+        "logger": "Microsoft.*",
+        "minLevel": "Info",
+        "writeTo": "console"
+      },
+      {
+        "logger": "Microsoft.*",
+        "minLevel": "Trace",
+        "writeTo": "sysfile",
+        "final": true
+      },
+      {
+        "logger": "*",
+        "minLevel": "Trace",
+        "writeTo": "appfile"
+      },
+      {
+        "logger": "*",
+        "minLevel": "Debug",
+        "writeTo": "console"
+      }
+    ]
+  }
+}

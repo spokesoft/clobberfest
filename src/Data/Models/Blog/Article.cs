@@ -4,13 +4,17 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Spokesoft.Clobberfest.Data.Models.Auth;
+namespace Spokesoft.Clobberfest.Data.Models.Blog;
 
 [Keyless]
-[Table("UserTokens", Schema = "Auth")]
-public partial class UserToken
+[Table("Articles", Schema = "Blog")]
+public partial class Article
 {
     public long Id { get; set; }
+
+    public string Name { get; set; }
+
+    public string Content { get; set; }
 
     public DateTime CreatedAt { get; set; }
 
@@ -18,9 +22,9 @@ public partial class UserToken
 
     public DateTime? DeletedAt { get; set; }
 
-    public long CreatedById { get; set; }
+    public long? CreatedById { get; set; }
 
-    public long UpdatedById { get; set; }
+    public long? UpdatedById { get; set; }
 
-    public DateTime? DeletedById { get; set; }
+    public long? DeletedById { get; set; }
 }
