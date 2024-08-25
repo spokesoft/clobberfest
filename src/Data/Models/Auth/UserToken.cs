@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
 namespace Spokesoft.Clobberfest.Data.Models.Auth;
 
 [Keyless]
 [Table("UserTokens", Schema = "Auth")]
-public partial class UserToken
+public partial class UserToken : AuthEntity
 {
     public long Id { get; set; }
 

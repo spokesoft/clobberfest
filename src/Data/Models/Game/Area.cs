@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
 namespace Spokesoft.Clobberfest.Data.Models.Game;
 
 [Keyless]
 [Table("Areas", Schema = "Game")]
-public partial class Area
+public partial class Area : GameEntity
 {
     public long Id { get; set; }
 

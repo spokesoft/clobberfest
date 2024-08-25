@@ -8,7 +8,7 @@ namespace Spokesoft.Clobberfest.Data.Models.Auth;
 
 [Keyless]
 [Table("Roles", Schema = "Auth")]
-public partial class Role
+public partial class Role : AuthEntity
 {
     public long Id { get; set; }
 

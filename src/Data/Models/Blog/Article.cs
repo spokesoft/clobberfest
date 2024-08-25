@@ -8,7 +8,7 @@ namespace Spokesoft.Clobberfest.Data.Models.Blog;
 
 [Keyless]
 [Table("Articles", Schema = "Blog")]
-public partial class Article
+public partial class Article : BlogEntity
 {
     public long Id { get; set; }
 

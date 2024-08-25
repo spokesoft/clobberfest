@@ -8,7 +8,7 @@ namespace Spokesoft.Clobberfest.Data.Models.Game;
 
 [Keyless]
 [Table("Games", Schema = "Game")]
-public partial class Game
+public partial class Game : GameEntity
 {
     public long Id { get; set; }
 
