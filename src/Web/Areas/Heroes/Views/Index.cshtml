@@ -1,1 +1,87 @@
-<h1>Heroes Index page ...</h1>
+<section class="section p-0 m-0">
+    <div class="columns">
+
+        <!-- Hero selection column -->
+
+        <div class="column m-3 is-one-quarter">
+            
+            <p class="title" style="margin-top: 140px;">Select your hero</p>
+            
+            @* <div class="">
+                No heroes    created yet. Create your first character here.
+            </div> *@
+
+            <aside class="menu">
+                <ul class="menu-list">
+                    <li><a>Hero slot 1</a></li>
+                    <li><a>Hero slot 2</a></li>
+                    <li><a>Hero slot 3</a></li>
+                    <li><a>Hero slot 4</a></li>
+                    <li><a>Hero slot 5</a></li>
+                    <li><a>Hero slot 6</a></li>
+                </ul>
+            </aside>
+
+            <a class="button is-primary is-fullwidth mt-3" href="/heroes/create">Create Character</a>
+
+        </div>
+
+        <!-- Hero preview column -->
+
+        <div class="column is-flex is-justify-content-center is-align-items-center">
+            <figure class="image is-3by5" style="height: 600px;">
+                <img src="~/img/warrior.png" alt="Placeholder hero image" />
+            </figure>
+        </div>
+
+        <!-- Options column -->
+
+        <div class="column is-one-quarter m-3">
+            <aside class="menu" style="margin-top: 150px;">
+
+                <p class="menu-label">General</p>
+
+                <ul class="menu-list">
+                    <li>
+                        <a href="/">
+                            <span class="icon is-small mr-2">
+                                <i class="fas fa-arrow-left"></i>
+                            </span>
+                            <span>Back to web</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/">
+                            <span class="icon is-small mr-2">
+                                <i class="fa-solid fa-skull"></i>
+                            </span>
+                            <span>Visit graveyard</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <p class="menu-label">Account</p>
+
+                <ul class="menu-list">
+                    <li>
+                        <a href="/">
+                            <span class="icon is-small mr-2">
+                                <i class="fa-solid fa-circle-user"></i>
+                            </span>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/">
+                            <span class="icon is-small mr-2">
+                                <i class="fas fa-power-off"></i>
+                            </span>
+                            <span>Sign out</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </aside>
+        </div>
+    </div>
+</section>
