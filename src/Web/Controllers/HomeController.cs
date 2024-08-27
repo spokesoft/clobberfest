@@ -15,7 +15,15 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        var viewModel = new IndexViewModel();
+        return View(viewModel);
+    }
+
+    [Route("/about")]
+    public IActionResult About()
+    {
+        var viewModel = new AboutViewModel();
+        return View(viewModel);
     }
 
     public IActionResult Privacy()

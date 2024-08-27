@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Clobberfest &middot Blog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <style>
+        html {
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="/">
+                        Clobberfest
+                    </a>
+                </div>
+                <div class="navbar-menu">
+                    <div class="navbar-end">
+                        <a class="navbar-item" href="#">Home</a>
+                        <a class="navbar-item" href="#">About</a>
+                        <a class="navbar-item is-active" href="#">Blog</a>
+                        <a class="navbar-item" href="#">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd">
+                    <figure class="image">
+                        <img src="img/corn.png" alt="Placeholder image">
+                    </figure>
+                    <p class="title">Corn on the clobb</p>
+                    <p class="subtitle">Lend me your ears</p>
+                    <aside class="menu">
+                    <p class="menu-label">General</p>
+                    <ul class="menu-list">
+                        <li><a>All posts</a></li>
+                        <li><a>Archived</a></li>
+                    </ul>
+                    </aside>
+                </div>
+                <div class="column">
+                    <main id="blog">
+                        @RenderBody()
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+</body>
+
+</html>

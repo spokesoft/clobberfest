@@ -1,29 +1,26 @@
-using Spokesoft.Clobberfest.Data.Models.Auth;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
-namespace Spokesoft.Clobberfest.Data.Models.Game
+namespace Spokesoft.Clobberfest.Data.Models.Game;
+
+[Keyless]
+[Table("Heros", Schema = "Game")]
+public partial class Hero : GameEntity
 {
-    /// <summary>
-    /// Hero base entity
-    /// </summary>
-    public class BaseHero
-    {
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-        public DateTime? DeletedAt { get; set; }
-        public long CreatedById { get; set; }
-        public long UpdatedById { get; set; }
-        public long? DeletedById { get; set; }
-    }
+    public long Id { get; set; }
 
-    /// <summary>
-    /// Hero entity
-    /// </summary>
-    public class Hero : BaseHero
-    {
-        public long Id { get; set; }
+    public DateTime CreatedAt { get; set; }
 
-        public User CreatedBy { get; set; } = null!;
-        public User UpdatedBy { get; set; } = null!;
-        public User? DeletedBy { get; set; } = null!;
-    }
+    public DateTime UpdatedAt { get; set; }
+
+    public DateTime? DeletedAt { get; set; }
+
+    public long CreatedById { get; set; }
+
+    public long UpdatedById { get; set; }
+
+    public DateTime? DeletedById { get; set; }
 }

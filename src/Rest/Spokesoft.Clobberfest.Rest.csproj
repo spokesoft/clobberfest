@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\common\Spokesoft.Clobberfest.Common.csproj" />
+    <ProjectReference Include="..\data\Spokesoft.Clobberfest.Data.csproj" />
   </ItemGroup>
 
 </Project>

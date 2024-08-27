@@ -1,29 +1,23 @@
-using Spokesoft.Clobberfest.Data.Models.Auth;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
-namespace Spokesoft.Clobberfest.Data.Models.Auth
+namespace Spokesoft.Clobberfest.Data.Models.Auth;
+
+[Keyless]
+[Table("UserTokens", Schema = "Auth")]
+public partial class UserToken : AuthEntity
 {
-    /// <summary>
-    /// User token base entity
-    /// </summary>
-    public class BaseUserToken
-    {
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-        public DateTime? DeletedAt { get; set; }
-        public long CreatedById { get; set; }
-        public long UpdatedById { get; set; }
-        public long? DeletedById { get; set; }
-    }
+    public long Id { get; set; }
 
-    /// <summary>
-    /// User token entity
-    /// </summary>
-    public class UserToken : BaseUserToken
-    {
-        public long Id { get; set; }
+    public DateTime CreatedAt { get; set; }
 
-        public User CreatedBy { get; set; } = null!;
-        public User UpdatedBy { get; set; } = null!;
-        public User? DeletedBy { get; set; } = null!;
-    }
+    public DateTime UpdatedAt { get; set; }
+
+    public DateTime? DeletedAt { get; set; }
+
+    public long CreatedById { get; set; }
+
+    public long UpdatedById { get; set; }
+
+    public DateTime? DeletedById { get; set; }
 }

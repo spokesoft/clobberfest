@@ -1,0 +1,62 @@
+@*
+/// <summary>
+/// Main layout navbar
+/// </summary>
+*@
+@model ViewModel
+
+<header>
+    <nav class="navbar is-spaced is-fixed-top">
+        <div class="container">
+
+            <!-- Navbar brand -->
+
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">Clobberfest</a>
+            </div>
+
+            <!-- Navbar menu -->
+
+            <div class="navbar-menu">
+
+                <!-- Navbar menu end -->
+
+                <div class="navbar-start">
+                    <a class="navbar-item" href="/blog">Blog</a>
+                    <a class="navbar-item" href="/wiki">Wiki</a>
+                    <a class="navbar-item" href="/play">Play</a>
+                </div>
+                
+                <!-- Navbar menu start -->
+                
+                <div class="navbar-end">
+                    
+                    <!-- GitHub link -->
+
+                    <a class="navbar-item" href="https://github.com/spokesoft/clobberfest">
+                        <span class="icon">
+                            <i class="fab fa-github"></i>
+                        </span>
+                    </a>
+
+                    @if (User.Identity != null && User.Identity.IsAuthenticated)
+                    {
+                        <a class="navbar-item">
+                            <span class="icon-text">
+                                <span class="icon">
+                                    <i class="fas fa-user-circle"></i>
+                                </span>
+                                <span>@Model.Navbar.UserDisplayName</span>
+                            </span>
+                        </a>
+                    }
+                    else 
+                    {
+                        <a class="navbar-item" href="@NavbarModel.LoginHref">@NavbarModel.LoginText</a>
+                        <a class="navbar-item" href="@NavbarModel.RegisterHref">@NavbarModel.RegisterText</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,36 @@
+@model Spokesoft.Clobberfest.Web.Areas.Blog.Models.IndexViewModel
+
+<section class="section is-fullheight" style="max-height: 100vh; padding-top: 84px;">
+    <div class="columns">
+        <div
+            class="column is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd">
+
+            <div class="is-flex is-flex-direction-column is-align-items-center">
+                <figure class="image mt-5" style="max-width: 250px;">
+                    <img src="/img/corn.png" alt="Corn on the clobb">
+                </figure>
+                <p class="title">Corn on the clobb</p>
+                <p class="subtitle">Lend me your ears ...</p>
+            </div>
+
+        </div>
+        <div class="column">
+
+            <div style="position: absolute; height: 100vh; max-height: calc(100vh - 99px); margin-right: 48px;">
+                <div style="overflow-y: scroll; height: 100%; padding-right: 15px;">
+
+                    @if(Model.Articles.Any())
+                    {
+                        <h1>Has articles</h1>
+                    }
+                    else 
+                    {
+                        @await Html.PartialAsync("_NoArticles.cshtml")
+                    }
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
