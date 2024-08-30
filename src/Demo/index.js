@@ -32,7 +32,7 @@
       this.context.closePath();
       this.context.save();
       this.context.globalAlpha = color.a;
-      this.context.fillStyle = this.context.strokeStyle = color.toHex();
+      this.context.fillStyle = this.context.strokeStyle = color.hex;
       this.context.stroke();
       this.context.fill();
       this.context.restore();
@@ -44,6 +44,15 @@
   | Color class
   |----------------------------------------------------------------------------
   */
+
+  function hue2rgb(p, q, t) {
+    if (t < 0) t += 1;
+    if (t > 1) t -= 1;
+    if (t < 1 / 6) return p + (q - p) * 6 * t;
+    if (t < 1 / 2) return q;
+    if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+    return p;
+  }
 
   class Color {
     constructor(r, g, b, a = 1) {
@@ -92,7 +101,72 @@
         const hex = color.toString(16);
         return hex.length === 1 ? "0" + hex : hex;
       };
-      return "#" + toHex(r) + toHex(g) + toHex(b);
+    }
+
+    lighten(percentage, lightColor) {
+      lightColor = lightColor || new Color(255, 255, 255);
+
+      var color = new Color(
+        (lightColor.r / 255) * this.r,
+        (lightColor.g / 255) * this.g,
+        (lightColor.b / 255) * this.b,
+        this.a
+      );
+    
+      color.l = Math.min(lightColor.l + percentage, 1);
+    
+      color.loadRGB();
+      return color;
+    }
+
+    loadHSL() {
+      const r = this.r / 255;
+      const g = this.g / 255;
+      const b = this.b / 255;
+    
+      const max = Math.max(r, g, b);
+      const min = Math.min(r, g, b);
+    
+      let h, s, l = (max + min) / 2;
+    
+      if (max === min) {
+        h = s = 0;
+      } else {
+        const d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+          case g: h = (b - r) / d + 2; break;
+          case b: h = (r - g) / d + 4; break;
+        }
+    
+        h /= 6;
+      }
+    
+      this.h = h;
+      this.s = s;
+      this.l = l;
+    }
+
+    loadRGB() {
+      let r, g, b;
+      const h = this.h;
+      const s = this.s;
+      const l = this.l;
+    
+      if (s === 0) {
+        r = g = b = l; 
+      } else {
+        var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+        var p = 2 * l - q;
+        r = hue2rgb(p, q, h + 1 / 3);
+        g = hue2rgb(p, q, h);
+        b = hue2rgb(p, q, h - 1 / 3);
+      }
+    
+      this.r = parseInt(r * 255);
+      this.g = parseInt(g * 255);
+      this.b = parseInt(b * 255);
     }
   }
 
@@ -103,8 +177,12 @@
   */
 
   class Path {
-    constructor(...points) {
-      this.points = points;
+    constructor(points) {
+      if (Object.prototype.toString.call(points) === '[object Array]') {
+        this.points = points;
+      } else {
+        this.points = Array.prototype.slice.call(arguments);
+      }
     }
 
     get depth() {
@@ -121,7 +199,7 @@
     }
 
     reverse() {
-      const points = slice.call(this.points);
+      const points = this.points.slice();
       return new Path(points.reverse());
     }
 
@@ -180,7 +258,7 @@
     constructor(x, y, z) {
       this.x = isNumber(x) ? x : 0;
       this.y = isNumber(y) ? y : 0;
-      this.z = isNumber(y) ? z : 0;
+      this.z = isNumber(z) ? z : 0;
     }
 
     get depth() {
@@ -252,10 +330,12 @@
   */
 
   class Shape {
-    constructor(...paths) {}
+    constructor(...paths) {
+      this.paths = paths;
+    }
 
     push(point) {
-      this.points.push(point);
+      this.paths.push(point);
     }
 
     translate() {
@@ -430,6 +510,7 @@
   };
 
   Shape.Prism = (origin, dx, dy, dz) => {
+
     dx = typeof dx === "number" ? dx : 1;
     dy = typeof dy === "number" ? dy : 1;
     dz = typeof dz === "number" ? dz : 1;
@@ -519,8 +600,30 @@
   
   class Scene {
 
-    constructor(id) {
-      const canvas = new Canvas(document.getElementById(id));
+    constructor(id, options) {
+      options = options || {};
+      this.canvas = new Canvas(document.getElementById(id));
+      this.light = {};
+      this.color = {};
+
+      this.angle = Math.PI / 6;
+      this.scale = options.scale || 70;
+      this.transformation = [
+        [
+          this.scale * Math.cos(this.angle),
+          this.scale * Math.sin(this.angle)
+        ],
+        [
+          this.scale * Math.cos(Math.PI - this.angle),
+          this.scale * Math.sin(Math.PI - this.angle)
+        ]
+      ];
+      this.originX = options.originX || this.canvas.width / 2;
+      this.originY = options.originY || this.canvas.height * 0.9;
+      this.light.position = new Vector(2, -1, 3);
+      this.light.angle = this.light.position.normalize();
+      this.color.difference = 0.20;
+      this.light.color = new Color(255, 255, 255);
     }
 
     add(items, color) {
@@ -528,10 +631,10 @@
       for (var i = 0; i < items.length; i++) {
         var item = items[i];
         if (item instanceof Path) {
-          this.appPath(item, color);
+          this.addPath(item, color);
         } else if (item instanceof Shape) {
           for (var j = 0; j < item.paths.length; j++) {
-            this.appPath(item.paths[j], color);
+            this.addPath(item.paths[j], color);
           }
         } else {
           console.error(`Invalid item type: ${typeof item}`);
@@ -539,10 +642,49 @@
       }
     }
 
-    appPath(path, baseColor) {
+    addPath(path, baseColor) {
+      baseColor = baseColor || new Color(120, 120, 120);
 
+      /* Compute color */
+      var v1 = Vector.fromTwoPoints(path.points[1], path.points[0]);
+      var v2 = Vector.fromTwoPoints(path.points[2], path.points[1]);
+    
+      var normal = Vector.crossProduct(v1, v2).normalize();
+    
+      /**
+       * Brightness is between -1 and 1 and is computed based
+       * on the dot product between the light source vector and normal.
+       */
+      var brightness = Vector.dotProduct(normal, this.light.angle);
+      var color = baseColor.lighten(brightness * this.color.difference, this.light.color);
+      console.log(path.points.map(this.translatePoint.bind(this)));
+      this.canvas.path(path.points.map(this.translatePoint.bind(this)), color);
+    }
+
+    translatePoint(point) {
+      /**
+       * X rides along the angle extended from the origin
+       * Y rides perpendicular to this angle (in isometric view: PI - angle)
+       * Z affects the y coordinate of the drawn point
+       */
+      var xMap = new Point(point.x * this.transformation[0][0],
+        point.x * this.transformation[0][1]);
+
+      var yMap = new Point(point.y * this.transformation[1][0],
+          point.y * this.transformation[1][1]);
+
+      var x = this.originX + xMap.x + yMap.x;
+      var y = this.originY - xMap.y - yMap.y - (point.z * this.scale);
+      return new Point(x, y);
     }
 
   }
+
+  const scene = new Scene('game');
+  const red = new Color(160, 60, 50);
+  const blue = new Color(50, 60, 160);
+  const green = new Color(0, 128, 0);
+  
+  scene.add(Shape.Prism(new Point(0, 0, 0)));
 
 })(this);

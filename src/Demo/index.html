@@ -10,11 +10,33 @@
   <main>
     <section class="game">
       <h1>Clobberfest demo</h1>
-      <canvas></canvas>
+      <canvas id="game"></canvas>
       <h3>Frames per second: 0</h3>
     </section>
   </main>
-  <script src="index.js"></script>
+  <script src="isomer.min.js"></script>
+  <script>
+    var Shape = Isomer.Shape;
+    var Point = Isomer.Point;
+    var Color = Isomer.Color;
+
+    var red = new Color(160, 60, 50);
+    var blue = new Color(50, 60, 160);
+
+    var iso = new Isomer(document.getElementById("game"), {
+      scale: 40
+    });
+
+    for (var i = 10; i > -10; i --) {
+      for (var j = 10; j > -10; j --) {
+        iso.add(Shape.Prism(Point(i, j), 1, 1, 1), red);
+      }
+    }
+
+    // iso.add(Shape.Prism(Point(0, 2, -5), 200, 200, 1));
+    // iso.add(Shape.Pyramid(Point(0, 2, 1)), red);
+    // iso.add(Shape.Prism(Point(2, 0, 1)), blue);
+  </script>
 </body>
 
 </html>
